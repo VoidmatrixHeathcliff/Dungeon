@@ -1,0 +1,15 @@
+{
+    "walk": [
+        "walk_1.png",
+        "walk_2.png",
+        "walk_3.png"
+    ],
+    "idle": [
+        "idle_1.png",
+        "idle_2.png"
+    ],
+    "fight": [
+        "fight_1.png",
+        "fight_2.png"
+    ]
+}
