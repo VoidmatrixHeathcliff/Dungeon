@@ -19,7 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DG_Sprite.cpp" />
     <ClCompile Include="DungeonClient.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DG_Sprite.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
