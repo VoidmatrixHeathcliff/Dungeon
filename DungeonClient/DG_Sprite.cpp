@@ -52,6 +52,7 @@ void DG_Sprite::SetColorKey(const SDL_Color& color, bool enable)
 	if (__m_pSurface)
 		SDL_SetColorKey(__m_pSurface, enable,
 			SDL_MapRGBA(__m_pSurface->format, color.r, color.g, color.b, color.a));
+
 	if (__m_pTexture)
 	{
 		SDL_DestroyTexture(__m_pTexture);
@@ -61,11 +62,13 @@ void DG_Sprite::SetColorKey(const SDL_Color& color, bool enable)
 
 void DG_Sprite::SetAlpha(Uint8 value)
 {
-	if (__m_pTexture)
-	{
-		SDL_SetTextureBlendMode(__m_pTexture, SDL_BLENDMODE_BLEND);
-		SDL_SetTextureAlphaMod(__m_pTexture, value);
-	}
+	if (!__m_pTexture && !__m_pSurface) return;
+
+	if (!__m_pTexture)
+		__m_pTexture = SDL_CreateTextureFromSurface(g_pRenderer, __m_pSurface);
+
+	SDL_SetTextureBlendMode(__m_pTexture, SDL_BLENDMODE_BLEND);
+	SDL_SetTextureAlphaMod(__m_pTexture, value);
 }
 
 void DG_Sprite::Render(const SDL_Rect* src, const SDL_Rect* dst)

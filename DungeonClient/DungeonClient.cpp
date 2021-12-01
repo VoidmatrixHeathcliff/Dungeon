@@ -9,13 +9,11 @@
 #include <map>
 #include <filesystem>
 
-SDL_Renderer* g_pRenderer;
+#include "DG_Assert.h"
+#include "DG_Sprite.h"
 
-inline void Error(std::string msg)
-{
-	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error", msg.c_str(), nullptr);
-	exit(-1);
-}
+SDL_Window*		g_pWindow;
+SDL_Renderer*	g_pRenderer;
 
 cJSON* LoadJSON(std::string str_path)
 {
@@ -29,23 +27,28 @@ cJSON* LoadJSON(std::string str_path)
 	return pjson;
 }
 
+void OnQuitGame()
+{
+	DG_Logger::QuitIO();
+}
+
 #undef main
 int main(int argc, char** argv)
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
-	std::filesystem::directory_iterator itor_skins("skins");
+	DG_Logger::InitIO();
+
+	std::filesystem::directory_iterator itor_skins("assets/skins");
 	for (const std::filesystem::directory_entry& itor : itor_skins)
 	{
 		std::filesystem::path path_skin_folder = itor.path();
 		cJSON* pjson_config = nullptr;
-		if (!(pjson_config = LoadJSON((path_skin_folder / "config.json").string())))
-			Error(std::string("Can't open ").append((path_skin_folder / "config.json").string()));
+		DG_Assert(pjson_config = LoadJSON((path_skin_folder / "config.json").string()));
 		std::map<std::string, SDL_Surface*> map_filename_surface;
 		cJSON* pjson_item = nullptr;
 		cJSON* pjson_list_walk = cJSON_GetObjectItem(pjson_config, "walk");
-		if (!pjson_list_walk || pjson_list_walk->type != cJSON_Array)
-			Error("Wrong type of walk list");
+		DG_Assert(pjson_list_walk && pjson_list_walk->type == cJSON_Array);
 		cJSON_ArrayForEach(pjson_item, pjson_list_walk)
 		{
 			if (map_filename_surface.find(pjson_item->valuestring) != map_filename_surface.end())

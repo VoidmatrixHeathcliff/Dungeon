@@ -21,9 +21,24 @@
     <ClCompile Include="DG_Sprite.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="DG_Utils.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DG_Logger.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DG_Sprite.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DG_Utils.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DG_Logger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DG_Assert.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

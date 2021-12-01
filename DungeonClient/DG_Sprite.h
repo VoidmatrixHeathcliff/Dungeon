@@ -18,6 +18,9 @@ public:
 	DG_Sprite(std::string file_path, bool lean = false);
 	DG_Sprite(void* mem, int size, bool lean = false);
 	~DG_Sprite();
+	DG_Sprite(const DG_Sprite&) = delete;
+	DG_Sprite& operator=(const DG_Sprite&) = delete;
+	operator bool() { return __m_pSurface || __m_pTexture; };
 
 	void Slim(SlimType type);
 	void SetColorKey(const SDL_Color& color, bool enable = true);
