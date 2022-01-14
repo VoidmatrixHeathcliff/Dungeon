@@ -2,6 +2,7 @@
 #define _DG_ASSERT_H_
 
 #include "DG_Logger.h"
+#include "DG_GameController.h"
 
 #include <SDL.h>
 
@@ -9,7 +10,7 @@
 
 extern SDL_Window* g_pWindow;
 
-extern void OnQuitGame();
+extern DG_GameController g_Game;
 
 inline void _DG_Assert(bool flag, const std::string& code, const std::string& file, int line)
 {
@@ -34,7 +35,7 @@ inline void _DG_Assert(bool flag, const std::string& code, const std::string& fi
 			g_pWindow
 		);
 
-		OnQuitGame();
+		g_Game.QuitGame();
 
 		exit(-1);
 	}

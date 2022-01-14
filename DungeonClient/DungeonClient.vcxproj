@@ -23,12 +23,14 @@
     <ClCompile Include="DG_Sprite.cpp" />
     <ClCompile Include="DG_Utils.cpp" />
     <ClCompile Include="DungeonClient.cpp" />
+    <ClCompile Include="DG_GameController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DG_Assert.h" />
     <ClInclude Include="DG_Logger.h" />
     <ClInclude Include="DG_Sprite.h" />
     <ClInclude Include="DG_Utils.h" />
+    <ClInclude Include="DG_GameController.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
